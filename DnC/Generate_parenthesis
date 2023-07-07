@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void solve(vector<string>&ans,int open,int close,int n,string output)
+    {
+        //Base condtn
+        if(open==0 && close==0)
+        {
+            ans.push_back(output);
+            return;
+        }
+        if(open>0)
+        {
+            output.push_back('(');
+            //recursive part
+            solve(ans,open-1,close,n,output);
+
+            //BackTrack
+            output.pop_back();
+
+        }
+        if(open<close)
+        {
+            output.push_back(')');
+            solve(ans,open,close-1,n,output);
+            output.pop_back();
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        int open = n;
+        int close=n;
+        vector<string>ans;
+        string output="";
+        solve(ans,open,close,n,output);
+        return ans;
+        
+    }
+};

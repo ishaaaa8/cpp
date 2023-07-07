@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void print(vector<vector<int>>&board , int n)
+{
+    for(int i-0;i<n;i++){
+        for(int j=0;j<n;j++)
+        {
+            cout<<board[i][j];
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+bool isSafe(board,row,col,n,e)
+{
+    int i=row;
+    int j=col;
+    while(i>=0)
+    {
+        if(board[i][j]=e)
+            return false;
+        i--;
+    }
+    while(j>=0)
+    {
+        if(board[i][j]=e) 
+            return false;
+        j--;
+    }
+    return true;
+}
+void solve(vector<vector<int>>&board,int col,int n,int e)
+{
+    if(e>9)
+    {
+        print(board,n);
+        return;
+    }
+
+    for(int row=0;row<n;row++)
+    {
+        if(isSafe(board,row,col,n,e))
+        {
+        board[row][j]=e++;
+        solve(board,col+1,n,e);
+        board[row][j]=0;
+
+        }
+    }
+
+}
+
+int main()
+{
+    int n=9;
+    vector<vector<int>>board(n,vector<int>(n,0));
+    int e=1;
+    solve(board,col,n,e);
+    
+}
